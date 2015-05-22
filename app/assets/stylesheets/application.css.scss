@@ -1,0 +1,13 @@
+//= require normalize-rails
+//= require refills/_flashes
+//= require refills/_navigation
+// as= require font-awesome
+
+@charset "utf-8";
+
+@import "bourbon";
+@import "neat";
+
+.hidden {
+  display: none;
+}

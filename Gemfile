@@ -20,6 +20,7 @@ gem "rails", "4.2.1"
 gem "recipient_interceptor"
 gem "refills"
 gem "sass-rails", "~> 5.0"
+gem 'sqlite3'
 gem "simple_form"
 gem "title"
 gem "uglifier"
@@ -77,3 +78,4 @@ gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 gem 'friendly_id'
 gem 'draper'
+gem 'font-awesome-rails'
