@@ -1,1 +1,9 @@
-#calendar
+#calendar[data-url=training_calendar_path]
+#workout-view
+#motivation
+  .motivation-list
+    - @motivational_items.each do |motivational_item|
+      .motivation-item
+        = motivational_item.motivate_me
+
+  #owl-carousel.owl-carousel.owl-theme

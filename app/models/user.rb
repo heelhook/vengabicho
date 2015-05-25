@@ -5,8 +5,13 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable
 
-  validates :name, :slug, presence: true
-  validates :slug, uniqueness: true
+  has_many :workouts, dependent: :destroy
+  has_many :goals, dependent: :destroy
+  has_many :training_area_points, dependent: :destroy
+  has_many :training_periods, dependent: :destroy
+
+  validates :name, :email, :slug, presence: true
+  validates :email, :slug, uniqueness: true
 
   private
 

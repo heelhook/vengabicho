@@ -1,0 +1,25 @@
+h1 Listing workouts
+
+table
+  thead
+    tr
+      th Date
+      th Motivation level
+      th Energy level
+      th
+      th
+      th
+
+  tbody
+    - @workouts.each do |workout|
+      tr
+        td = workout.date
+        td = workout.motivation_level
+        td = workout.energy_level
+        td = link_to 'Show', workout
+        td = link_to 'Edit', edit_workout_path(workout)
+        td = link_to 'Destroy', workout, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Workout', new_workout_path

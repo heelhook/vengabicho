@@ -1,9 +1,35 @@
+//= require owl.carousel
+//= require owl.theme
+
 @import "bourbon";
 @import "base/base";
 @import "neat";
 @import "variables";
 @import "fullcalendar";
+@import "workouts";
+@import "calendar";
+
+main {
+  @include outer-container(100%);
+  @include pad(1em);
+}
 
 #calendar {
-  @include span-columns(6);
+  @include span-columns(5);
+}
+
+#workout-view {
+  @include span-columns(7);
+  @include omega;
+}
+
+#motivation {
+  @include span-columns(7);
+}
+
+.fc-toolbar button {
+  &:hover, &.fc-state-hover {
+    background: none;
+    color: black;
+  }
 }

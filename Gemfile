@@ -12,8 +12,10 @@ gem "flutie"
 gem "high_voltage"
 gem "i18n-tasks"
 gem "jquery-rails"
+gem 'jquery-ui-rails'
+gem 'turbolinks'
+gem 'jbuilder', '~> 2.0'
 gem "neat", "~> 1.7.0"
-gem "newrelic_rpm", ">= 3.9.8"
 gem "normalize-rails", "~> 3.0.0"
 gem "rack-canonical-host"
 gem "rails", "4.2.1"
@@ -43,6 +45,12 @@ group :development do
   gem 'rb-fsevent', :require=>false
   gem 'rb-inotify', :require=>false
   gem 'spring-commands-rspec'
+  gem 'capistrano'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails', '~> 1.1.0'
+  gem 'capistrano-rails-console'
+  gem 'capistrano-rvm', github: "capistrano/rvm"
+  gem 'capistrano3-unicorn'
 end
 
 group :development, :test do
@@ -79,3 +87,5 @@ gem 'momentjs-rails'
 gem 'friendly_id'
 gem 'draper'
 gem 'font-awesome-rails'
+gem 'google-search'
+gem 'owlcarousel-rails'

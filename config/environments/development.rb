@@ -41,4 +41,6 @@ Rails.application.configure do
   config.action_view.raise_on_missing_translations = true
 
   config.action_mailer.default_url_options = { host: "localhost:7000" }
+
+  config.middleware.insert_after(ActionDispatch::Static, Rack::LiveReload)
 end

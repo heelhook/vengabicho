@@ -3,5 +3,13 @@ Rails.application.routes.draw do
     registrations: 'registrations',
   }
 
-  root to: 'training#index'
+  resources :training_areas
+  resources :exercises
+  resources :goals
+  resources :workouts
+  resources :training_periods, path: 'periodization'
+
+  get '/calendar' => 'training#calendar', as: :training_calendar
+  get '/motivate' => 'training#motivate', as: :training_motivation
+  get '/training' => 'training#index', as: :training
 end

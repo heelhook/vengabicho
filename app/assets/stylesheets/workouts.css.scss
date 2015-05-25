@@ -1,0 +1,56 @@
+@import "bourbon";
+@import "base/base";
+@import "neat";
+@import "variables";
+
+.workout {
+  h1 {
+    color: $action-color;
+  }
+
+  h2 {
+    color: $action-color;
+  }
+
+  .exercises {
+    @include clearfix;
+
+    .exercise {
+      @include span-columns(5);
+      margin-bottom: 1em;
+
+      &.hidden { display: none; }
+
+      h2 {
+        i.fa.fa-close {
+          display: inline-block;
+          float: left;
+          cursor: pointer;
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+
+  .training-area-points {
+    @include clearfix;
+
+    .training-area-point {
+      @include span-columns(5);
+      margin-bottom: 1em;
+
+      &.hidden { display: none; }
+    }
+  }
+
+  a.button {
+    span.spinner { display: none; }
+  }
+
+  &.submitting {
+    a.button {
+      span.normal { display: none; }
+      span.spinner { display: block; }
+    }
+  }
+}

@@ -1,0 +1,61 @@
+@import "bourbon";
+@import "base/base";
+@import "neat";
+@import "variables";
+
+#calendar {
+  .fc-ltr .fc-basic-view .fc-day-number {
+    border-bottom: solid $medium-gray 1px;
+    border-top: solid $medium-gray 1px;
+    opacity: 1;
+  }
+
+  .fc-row .fc-content-skeleton td.fc-day-number, .fc-row .fc-helper-skeleton td {
+    background: #eeeeee;
+  }
+
+  .fc-widget-header table, .fc-content-skeleton table {
+    margin: 0px;
+
+    .fc-day-header {
+      @include pad(5px);
+    }
+  }
+
+  .fc-event {
+    .fc-content {
+      white-space: normal;
+    }
+
+    padding: 2px 5px;
+    border: 0px;
+
+    &.exercise {
+      @include background(#1F97F4);
+    }
+
+    &.goal {
+      @include background($action-color);
+      @include pad(0px 5px);
+    }
+
+    &.point {
+      .fc-content {
+        white-space: nowrap;
+      }
+
+      &.aerobic-recovery {
+        background-color: $red;
+      }
+
+      &.balance {
+        background-color: $light-gray;
+        color: black;
+      }
+
+      &.technique {
+        background-color: #F4A21E;
+      }
+    }
+  }
+}

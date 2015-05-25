@@ -1,0 +1,15 @@
+@import "bourbon";
+@import "base/base";
+@import "neat";
+@import "variables";
+@import "partials/bullets";
+@import "partials/hero";
+
+main {
+  @include outer-container(100%);
+  margin-top: 0;
+}
+
+.container {
+  @include outer-container;
+}

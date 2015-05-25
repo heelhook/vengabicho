@@ -1,12 +1,22 @@
 //= require normalize-rails
 //= require refills/_flashes
 //= require refills/_navigation
-// as= require font-awesome
+//= require font-awesome
+//= require jquery-ui
 
 @charset "utf-8";
 
 @import "bourbon";
 @import "neat";
+@import "base/base";
+
+@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
+@import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700,400italic);
+
+main {
+  @include outer-container;
+  margin-top: 1em;
+}
 
 .hidden {
   display: none;

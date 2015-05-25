@@ -1,0 +1,11 @@
+= simple_form_for(@training_period) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.input :start
+    = f.input :finish
+    = f.input :color
+
+  .form-actions
+    = f.button :submit

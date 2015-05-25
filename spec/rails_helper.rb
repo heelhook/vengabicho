@@ -13,10 +13,11 @@ module Features
 end
 
 RSpec.configure do |config|
+  config.include Devise::TestHelpers, :type => :controller
   config.include Features, type: :feature
   config.infer_base_class_for_anonymous_controllers = false
   config.infer_spec_type_from_file_location!
-  config.use_transactional_fixtures = false
+  config.use_transactional_fixtures = true
 end
 
 ActiveRecord::Migration.maintain_test_schema!

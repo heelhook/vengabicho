@@ -1,0 +1,10 @@
+= simple_form_for(@goal) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.input :date
+    = f.input :image_keywords
+
+  .form-actions
+    = f.button :submit

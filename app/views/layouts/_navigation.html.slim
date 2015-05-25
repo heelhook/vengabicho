@@ -1,41 +1,24 @@
 header.navigation role="banner"
   .navigation-wrapper
-    a.logo href="javascript:void(0)"
+    a.logo href=root_path
       img alt=("Logo Image") src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_1.png" /
     a#js-mobile-menu.navigation-menu-button href="javascript:void(0)"  MENU
     nav role="navigation"
       ul#js-navigation-menu.navigation-menu.show
-        li.nav-link
-          a href="javascript:void(0)"  Products
-        li.nav-link
-          a href="javascript:void(0)"  About Us
-        li.nav-link
-          a href="javascript:void(0)"  Contact
-        li.nav-link.more
-          a href="javascript:void(0)"  More
-          ul.submenu
-            li
-              a href="javascript:void(0)"  Submenu Item
-            li
-              a href="javascript:void(0)"  Another Item
-            li.more
-              a href="javascript:void(0)"  Item with submenu
-              ul.submenu
-                li
-                  a href="javascript:void(0)"  Sub-submenu Item
-                li
-                  a href="javascript:void(0)"  Another Item
-            li.more
-              a href="javascript:void(0)"  Another submenu
-              ul.submenu
-                li
-                  a href="javascript:void(0)"  Sub-submenu
-                li
-                  a href="javascript:void(0)"  An Item
+        - if user_signed_in?
+          li.nav-link
+            = link_to 'Training', training_path
+          li.nav-link
+            = link_to 'Training Areas', training_areas_path
+          li.nav-link
+            = link_to 'Training Periodization', training_periods_path
+          li.nav-link
+            = link_to 'Goals', goals_path
+        - else
+          li.nav-link.logo
+            = link_to 'Venga Bicho!', root_path
     .navigation-tools
-      .search-bar
-        form role="search"
-          input placeholder=("Enter Search") type="search" /
-          button type="submit"
-            img alt=("Search Icon") src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/search-icon.png" /
-      a.sign-up href="javascript:void(0)"  Sign Up
+      - if user_signed_in?
+        = link_to "Sign out", destroy_user_session_path, method: 'delete', class: 'sign-up'
+      - else
+        a.sign-up href=new_user_registration_path  Sign Up

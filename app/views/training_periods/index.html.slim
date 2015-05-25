@@ -1,0 +1,27 @@
+h1 Training Periodization
+
+table
+  thead
+    tr
+      th Name
+      th Starting on
+      th Finishing on
+      th Color
+      th
+      th
+      th
+
+  tbody
+    - @training_periods.each do |training_period|
+      tr
+        td = training_period.name
+        td = l training_period.start
+        td = l training_period.finish
+        td = training_period.color
+        td = link_to 'Show', training_period
+        td = link_to 'Edit', edit_training_period_path(training_period)
+        td = link_to 'Destroy', training_period, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Training period', new_training_period_path, class: 'button'

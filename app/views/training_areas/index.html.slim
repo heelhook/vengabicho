@@ -1,0 +1,25 @@
+h1 Training Areas
+
+p What are your overall areas of training?
+
+table
+  thead
+    tr
+      th Name
+      th Description
+      th
+      th
+      th
+
+  tbody
+    - @training_areas.each do |training_area|
+      tr
+        td= training_area.name
+        td= simple_format training_area.description
+        td = link_to 'Show', training_area
+        td = link_to 'Edit', edit_training_area_path(training_area)
+        td = link_to 'Destroy', training_area, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Training area', new_training_area_path, class: 'button'

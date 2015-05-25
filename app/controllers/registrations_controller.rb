@@ -1,6 +1,5 @@
 class RegistrationsController < Devise::RegistrationsController
   before_filter :update_sanitized_params, only: [:create, :update]
-  layout 'with-sidebar'
 
   protected
 

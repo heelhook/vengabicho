@@ -1,0 +1,18 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @training_period.name
+p
+  strong Start:
+  = @training_period.start
+p
+  strong Finish:
+  = @training_period.finish
+p
+  strong Color:
+  = @training_period.color
+
+= link_to 'Edit', edit_training_period_path(@training_period)
+'|
+= link_to 'Back', training_periods_path

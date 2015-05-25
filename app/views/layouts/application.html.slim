@@ -7,7 +7,6 @@ html
     meta name="description" content="#{content_for?(:description) ? yield(:description) : 'Weleet'}"
     == stylesheet_link_tag "application", :media => 'all', 'data-turbolinks-track' => true
     == javascript_include_tag 'application', 'data-turbolinks-track' => true
-    == javascript_include_tag '//widget.uservoice.com/21R6LUlq4yVFiPn54awaeQ.js', 'data-turbolinks-track' => true
     - unless @skip_autoloading_assets
       - if Rails.application.config.assets.precompile.include? "#{controller_name}.css"
         == stylesheet_link_tag controller_name, :media => 'all', 'data-turbolinks-track' => true
@@ -20,8 +19,5 @@ html
   body[class="#{controller_name}-#{action_name}"]
     == render 'layouts/navigation'
     == render 'layouts/messages'
-    - if content_for? :content
-      == yield :content
-    - else
-      main[role="main"]
-        == yield
+    main[role="main"]
+      == yield

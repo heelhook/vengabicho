@@ -1,0 +1,79 @@
+.hero {
+  $base-border-radius: 3px !default;
+  $action-color: #477DCA !default;
+  $large-screen: em(860) !default;
+  $hero-background-top: #7F99BE;
+  $hero-background-bottom: #20392B;
+  $hero-color: white;
+  $gradient-angle: 10deg;
+  $hero-image: '/assets/hero.jpg';
+
+  @include background(url($hero-image), linear-gradient($gradient-angle, $hero-background-bottom, $hero-background-top), no-repeat $hero-background-top scroll);
+  background-color: #324766;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-bottom: 3em;
+
+  position: relative;
+
+  &::before {
+    content: "";
+    background: $action-color;
+    opacity: 0.5;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+    z-index: 1;
+  }
+
+  .hero-logo img {
+    height: 4em;
+    margin-bottom: 1em;
+  }
+
+  .hero-inner {
+    @include outer-container;
+    @include clearfix;
+    color: $hero-color;
+    margin: auto;
+    padding: 2.5em;
+    text-align: center;
+    z-index: 2;
+    position: relative;
+
+    .hero-copy {
+      text-align: center;
+
+      h1 {
+        font-size: 1.5em;
+        margin-top: 1em;
+        margin-bottom: 0.5em;
+        font-weight: 600;
+
+        @include media($large-screen) {
+          font-size: 2.5em;
+        }
+      }
+
+      p {
+        font-weight: 300;
+        font-size: 1.25em;
+        line-height: 1.4em;
+        margin: 0 auto 3em auto;
+
+        @include media($large-screen) {
+          font-size: 2em;
+          max-width: 70%;
+        }
+      }
+    }
+
+    button {
+      @include button(flat, $action-color);
+      padding: 0.7em 1em;
+    }
+  }
+}

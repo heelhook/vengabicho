@@ -1,6 +1,6 @@
 // Typography
-$base-font-family: $helvetica;
-$heading-font-family: $base-font-family;
+$base-font-family: 'Lato', $helvetica;
+$heading-font-family: 'Montserrat', $base-font-family;
 
 // Font Sizes
 $base-font-size: 1em;
@@ -17,14 +17,17 @@ $base-z-index: 0;
 
 // Colors
 $blue: #477dca;
-$dark-gray: #333;
+$bright-red: #ff4547;
+$red: #f15d58;
+$green: #83bf17;
+$dark-gray: #363635;
 $medium-gray: #999;
 $light-gray: #ddd;
 
 // Font Colors
 $base-background-color: #fff;
 $base-font-color: $dark-gray;
-$action-color: $blue;
+$action-color: $red;
 
 // Border
 $base-border-color: $light-gray;
