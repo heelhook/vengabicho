@@ -44,13 +44,13 @@ group :development do
   gem 'rb-fchange', :require=>false
   gem 'rb-fsevent', :require=>false
   gem 'rb-inotify', :require=>false
-  gem 'spring-commands-rspec'
   gem 'capistrano'
   gem 'capistrano-bundler'
   gem 'capistrano-rails', '~> 1.1.0'
   gem 'capistrano-rails-console'
   gem 'capistrano-rvm', github: "capistrano/rvm"
-  gem 'capistrano3-unicorn'
+  gem 'capistrano-passenger'
+  gem 'capistrano-secrets-yml', '~> 1.0.0'
 end
 
 group :development, :test do
@@ -78,6 +78,7 @@ end
 group :staging, :production do
   gem "rack-timeout"
   gem 'mysql2'
+  gem 'therubyracer'
 end
 
 gem 'devise'
