@@ -7,9 +7,11 @@
 # server 'example.com', user: 'deploy', roles: %w{app web}, other_property: :other_value
 # server 'db.example.com', user: 'deploy', roles: %w{db}
 
+set :stage, :staging
 role :app, %w{vengabicho@vengabicho.com}
 role :web, %w{vengabicho@vengabicho.com}
 role :db,  %w{vengabicho@vengabicho.com}
+set :deploy_via, :remote_cache
 
 # role-based syntax
 # ==================
