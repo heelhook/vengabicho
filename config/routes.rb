@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   get '/calendar' => 'training#calendar', as: :training_calendar
   get '/motivate' => 'training#motivate', as: :training_motivation
   get '/training' => 'training#index', as: :training
+  get '/training/stats' => 'training#stats', as: :training_stats
 end

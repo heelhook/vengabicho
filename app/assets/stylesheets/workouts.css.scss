@@ -32,6 +32,18 @@
     }
   }
 
+  .training-area-point, .workout-point {
+    h2 { float: left; margin-right: 1em; }
+    span.value {
+      display: block;
+      line-height: 1.25em;
+    }
+
+    .slider {
+      margin-top: 1em;
+    }
+  }
+
   .training-area-points {
     @include clearfix;
 
@@ -43,6 +55,10 @@
     }
   }
 
+  .workout-point {
+    margin-bottom: 1em;
+  }
+
   a.button {
     span.spinner { display: none; }
   }
@@ -51,6 +67,12 @@
     a.button {
       span.normal { display: none; }
       span.spinner { display: block; }
+    }
+  }
+
+  &.future {
+    .points {
+      display: none;
     }
   }
 }

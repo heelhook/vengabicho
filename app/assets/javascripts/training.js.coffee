@@ -4,22 +4,21 @@
 #= require owl.carousel
 
 display_calendar = ->
-  if $('#calendar').length > 0
-    url = $('#calendar').data().url
-    $('#calendar').fullCalendar
-      events: url
-      dayClick: (date) -> day_clicked(date.format())
-      header:
-        left: 'title'
-        center: 'month,basicWeek'
-        right: 'today prev,next'
+  $('#calendar').fullCalendar
+    events: '/calendar'
+    dayClick: (date) -> day_clicked(date.format())
+    header:
+      left: 'title'
+      center: 'month,basicWeek'
+      right: 'today prev,next'
 
 day_clicked = (date) ->
   $.ajax
     method: 'get'
     url: "/workouts/#{date}"
     success: (html) ->
-      $('#workout-view').html(html)
+      $('#workout-view').html(html).show()
+      $('#motivation').hide()
 
 fetch_motivational_images = ->
   $('#owl-carousel').owlCarousel
@@ -30,6 +29,7 @@ fetch_motivational_images = ->
     singleItem: true
     pagination: false
     autoHeight: true
+    transitionStyle: 'fade'
 
   setTimeout ->
     fetch_motivational_images()
@@ -41,6 +41,9 @@ $(document).on 'page:load ready', ->
     fetch_motivational_images()
   , 2500
 
-$(document).on 'workout-saved', '.workout', (e) ->
+$(document).on 'close-workout', '.workout', (e) ->
   $('#calendar').fullCalendar 'refetchEvents'
-  $('#workout-view').html('')
+  $('#workout-view').html('').hide()
+  $('#motivation').show()
+  new Chartkick.BarChart('chart-1', '/training/stats', {})
+

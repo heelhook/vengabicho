@@ -1,0 +1,4 @@
+.training-area-point{class="#{training_area_point.new_record? ? 'hidden' : ''}" id=training_area_point.training_area_slug}
+  h2 #{training_area_point.training_area_name} Points
+  == render partial: 'slider', locals: { id: training_area_point.training_area_slug, value: training_area_point.points.to_i }
+

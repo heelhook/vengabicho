@@ -5,7 +5,7 @@
     = f.input :name
     = f.input :start
     = f.input :finish
-    = f.input :color
+    = f.select :color, (current_user.colors.map {|name, value| [name, value]})
 
   .form-actions
     = f.button :submit

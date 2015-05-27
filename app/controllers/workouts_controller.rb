@@ -54,10 +54,14 @@ class WorkoutsController < ApplicationController
   end
 
   def set_workout
-    @workout = Workout.find_or_create_by(user: current_user, date: params[:id])
+    @workout = Workout.find_or_create_by(user: current_user, date: params[:id]).decorate
   end
 
   def workout_params
-    params.require(:workout).permit(:date, :motivation_level, :energy_level)
+    params.require(:workout).permit(
+      :date,
+      :motivation_level,
+      :energy_level
+    )
   end
 end

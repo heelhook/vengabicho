@@ -1,52 +1,46 @@
-.workout[data-url=workout_path(id: @workout.date)]
+.workout[data-url=workout_path(id: @workout.date) class=(@workout.past? ? 'past' : 'future')]
   h1= time_tag @workout.date
-
-  p#notice = notice
 
   p
     strong Log Exercise
-    = select_tag :exercise, options_from_collection_for_select(Exercise.all, :slug, :name), prompt: 'What exercise did you do?'
+    = select_tag :exercise, options_from_collection_for_select(Exercise.all, :slug, :name), prompt: @workout.log_exercise_prompt
 
   .exercises
     - @workout.workout_exercises.each do |exercise|
-      - exercise = exercise.decorate
-      .exercise{class="#{exercise.slug} #{exercise.new_record? ? 'hidden' : ''}" id=exercise.slug data-trainingareas=exercise.training_area_slugs.join(' ')}
-        h2
-          = exercise.name
-          i.fa.fa-close[data-role="remove"]
+      == render partial: 'exercise', locals: { exercise: exercise.decorate }
 
-        - begin
-          = render partial: "exercise_log_#{exercise.slug}", locals: { exercise: exercise }
-        - rescue ActionView::MissingTemplate => e
-        - rescue => e
-          pre= e
+  .points
+    .training-area-points
+      - @workout.training_area_points.each do |training_area_point|
+        == render partial: 'training_area_point', locals: { training_area_point: training_area_point }
 
-        = text_area_tag :comments, exercise.comments, placeholder: 'Comments'
+    .workout-point
+      h2 Motivation level:
+      == render partial: 'slider', locals: { id: 'motivation_level', value: @workout.motivation_level.to_i }
 
-  .training-area-points
-    - @workout.training_area_points.each do |training_area_point|
-      .training-area-point{class="#{training_area_point.new_record? ? 'hidden' : ''}" id=training_area_point.training_area_slug}
-        h2 #{training_area_point.training_area_name} Points
-        = training_area_point.points
-        .slider{id=training_area_point.training_area_slug}
-
-  p
-    strong Motivation level:
-    = @workout.motivation_level
-    .slider#motivational-level
-  p
-    strong Energy level:
-    = @workout.energy_level
-    .slider#energy-level
+    .workout-point
+      h2 Energy level:
+      == render partial: 'slider', locals: { id: 'energy_level', value: @workout.energy_level.to_i }
 
   a.button[href='#' data-role="save-workout"]
     span.normal Save Workout
     span.spinner
       i.fa.fa-spinner.fa-spin.spinner
 
+  a.button[href='#' data-role="close-workout"] Close
+
 coffee:
   $ ->
-    $('.slider').slider
-      range: 'max'
-      min: 0
-      max: 10
+    for i in $('.slider')
+      console.log($(i))
+      console.log($(i).data().value)
+      value = parseInt($(i).data().value)
+      console.log "is #{value}"
+      $(i).slider
+        range: 'max'
+        min: 0
+        max: 10
+        value: value
+        slide: (e, ui) ->
+          $(@).parents('.slider-container').find('.value').text(ui.value)
+

@@ -14,6 +14,8 @@ header.navigation role="banner"
             = link_to 'Training Periodization', training_periods_path
           li.nav-link
             = link_to 'Goals', goals_path
+          li.nav-link
+            = link_to "Settings", edit_user_registration_path
         - else
           li.nav-link.logo
             = link_to 'Venga Bicho!', root_path

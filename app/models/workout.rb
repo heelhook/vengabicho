@@ -18,4 +18,8 @@ class Workout < ActiveRecord::Base
       self.training_area_points.find_or_initialize_by(training_area: training_area)
     end
   end
+
+  def past?
+    (self.date <= Date.today)
+  end
 end

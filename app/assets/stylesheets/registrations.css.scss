@@ -1,0 +1,13 @@
+@import "bourbon";
+@import "base/base";
+@import "neat";
+@import "variables";
+
+.account {
+  @include span-columns(6);
+}
+
+.settings {
+  @include span-columns(6);
+  @include omega;
+}

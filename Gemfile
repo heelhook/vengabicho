@@ -89,4 +89,5 @@ gem 'friendly_id'
 gem 'draper'
 gem 'font-awesome-rails'
 gem 'google-search'
-gem 'owlcarousel-rails'
+gem 'owlcarousel-rails', github: 'acrogenesis/owlcarousel-rails'
+gem "chartkick"

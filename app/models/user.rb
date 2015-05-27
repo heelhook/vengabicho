@@ -13,7 +13,20 @@ class User < ActiveRecord::Base
   validates :name, :email, :slug, presence: true
   validates :email, :slug, uniqueness: true
 
+  before_save :setup_resources
+
+  serialize :colors, Hash
+
   private
+
+  def setup_resources
+    self.colors = {
+      yellow: '#F4D068',
+      light_blue: '#7EA2F4',
+      blue: '#4362F4',
+      pink: '#F44386',
+    }
+  end
 
   def slug_candidates
     [

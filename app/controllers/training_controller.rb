@@ -27,4 +27,14 @@ class TrainingController < ApplicationController
 
     render layout: false
   end
+
+  def stats
+    stats = current_user.training_area_points.group(:training_area_id).sum(:points)
+    named_stats = {}
+
+    stats.each do |training_area_id, points|
+      named_stats[TrainingArea.find(training_area_id).name] = points
+    end
+    render json: named_stats
+  end
 end

@@ -1,9 +1,15 @@
-#calendar[data-url=training_calendar_path]
-#workout-view
-#motivation
-  .motivation-list
-    - @motivational_items.each do |motivational_item|
-      .motivation-item
-        = motivational_item.motivate_me
+= javascript_include_tag "//www.google.com/jsapi", "chartkick"
 
-  #owl-carousel.owl-carousel.owl-theme
+.left-pane
+  #calendar
+  #graph
+    = bar_chart training_stats_path
+.right-pane
+  #workout-view
+  #motivation
+    .motivation-list
+      - @motivational_items.each do |motivational_item|
+        .motivation-item
+          = motivational_item.motivate_me
+
+    #owl-carousel.owl-carousel.owl-theme

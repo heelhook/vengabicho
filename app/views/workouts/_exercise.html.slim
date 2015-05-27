@@ -1,0 +1,12 @@
+.exercise{class="#{exercise.slug} #{exercise.new_record? ? 'hidden' : ''}" id=exercise.slug data-trainingareas=exercise.training_area_slugs.join(' ')}
+  h2
+    = exercise.name
+    i.fa.fa-close[data-role="remove"]
+
+  - begin
+    = render partial: "exercise_log_#{exercise.slug}", locals: { exercise: exercise }
+  - rescue ActionView::MissingTemplate => e
+  - rescue => e
+    pre= e
+
+  = text_area_tag :comments, exercise.comments, placeholder: 'Comments'

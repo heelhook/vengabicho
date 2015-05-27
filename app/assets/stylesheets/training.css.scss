@@ -15,21 +15,32 @@ main {
 }
 
 #calendar {
-  @include span-columns(5);
 }
 
 #workout-view {
-  @include span-columns(7);
-  @include omega;
 }
 
 #motivation {
-  @include span-columns(7);
 }
 
 .fc-toolbar button {
   &:hover, &.fc-state-hover {
     background: none;
     color: black;
+  }
+}
+
+.left-pane {
+  @include span-columns(5);
+  @include media($mobile) {
+    width: 100%
+  }
+}
+
+.right-pane {
+  @include span-columns(7);
+  @include omega;
+  @include media($mobile) {
+    width: 100%
   }
 }
