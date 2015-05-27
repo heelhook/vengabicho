@@ -5,7 +5,7 @@ class WorkoutsController < ApplicationController
   layout :choose_layout
 
   def index
-    @workouts = Workout.all
+    @workouts = current_user.workouts
   end
 
   def show
@@ -62,6 +62,8 @@ class WorkoutsController < ApplicationController
       :date,
       :motivation_level,
       :energy_level
+    ).merge(
+      user: current_user,
     )
   end
 end

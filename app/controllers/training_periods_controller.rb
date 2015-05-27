@@ -4,7 +4,7 @@ class TrainingPeriodsController < ApplicationController
   respond_to :html
 
   def index
-    @training_periods = TrainingPeriod.all
+    @training_periods = current_user.training_periods
   end
 
   def show
@@ -19,8 +19,6 @@ class TrainingPeriodsController < ApplicationController
 
   def create
     @training_period = TrainingPeriod.new(training_period_params)
-    @training_period.user = current_user
-
     @training_period.save
 
     respond_with @training_period, location: -> { training_periods_path }
@@ -40,11 +38,19 @@ class TrainingPeriodsController < ApplicationController
   end
 
   private
-    def set_training_period
-      @training_period = TrainingPeriod.find(params[:id])
-    end
 
-    def training_period_params
-      params.require(:training_period).permit(:name, :start, :finish, :color)
-    end
+  def set_training_period
+    @training_period = TrainingPeriod.find(params[:id])
+  end
+
+  def training_period_params
+    params.require(:training_period).permit(
+      :name,
+      :start,
+      :finish,
+      :color,
+    ).merge(
+      user: current_user,
+    )
+  end
 end

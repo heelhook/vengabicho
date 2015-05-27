@@ -4,7 +4,7 @@ class GoalsController < ApplicationController
   respond_to :html
 
   def index
-    @goals = Goal.all
+    @goals = current_user.goals
   end
 
   def show
@@ -19,7 +19,6 @@ class GoalsController < ApplicationController
 
   def create
     @goal = Goal.new(goal_params)
-    @goal.user = current_user
     @goal.save
 
     respond_with @goal, location: -> { goals_path }
@@ -46,6 +45,8 @@ class GoalsController < ApplicationController
       :name,
       :date,
       :image_keywords
+    ).merge(
+      user: current_user,
     )
   end
 end
