@@ -16,4 +16,6 @@ en:
         "%B %d"
 
   titles:
-    application: Training-log
+    application: Venga Bicho! Get psyched on rock climbing training plan and log
+    trainings:
+      index: Your training log and plan
