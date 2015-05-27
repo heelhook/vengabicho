@@ -3,28 +3,22 @@ class TrainingAreasController < ApplicationController
   before_action :authenticate_user!
   respond_to :html
 
-  # GET /training_areas
   def index
-    @training_areas = TrainingArea.all
+    @training_areas = current_user.all_training_areas
   end
 
-  # GET /training_areas/1
   def show
   end
 
-  # GET /training_areas/new
   def new
     @training_area = TrainingArea.new
   end
 
-  # GET /training_areas/1/edit
   def edit
   end
 
   def create
     @training_area = TrainingArea.new(training_area_params)
-    @training_areas.user = current_user
-
     @training_area.save
     respond_with @training_area, location: -> { training_areas_path }
   end
@@ -40,15 +34,17 @@ class TrainingAreasController < ApplicationController
   end
 
   private
+
   def set_training_area
     @training_area = TrainingArea.find(params[:id])
   end
 
-  # Only allow a trusted parameter "white list" through.
   def training_area_params
     params.require(:training_area).permit(
       :name,
       :description,
+    ).merge(
+      user: current_user,
     )
   end
 end

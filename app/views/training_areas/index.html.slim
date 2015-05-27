@@ -7,8 +7,7 @@ table
     tr
       th Name
       th Description
-      th
-      th
+      th Exercises
       th
 
   tbody
@@ -16,9 +15,14 @@ table
       tr
         td= training_area.name
         td= simple_format training_area.description
-        td = link_to 'Show', training_area
-        td = link_to 'Edit', edit_training_area_path(training_area)
-        td = link_to 'Destroy', training_area, data: {:confirm => 'Are you sure?'}, :method => :delete
+        td
+          ul
+            - training_area.exercises.each do |exercise|
+              li= link_to exercise.name, exercise_path(exercise)
+        td
+          - if training_area.user == current_user
+            = link_to 'Edit', edit_training_area_path(training_area), class: 'button'
+            = link_to 'Destroy', training_area, data: {:confirm => 'Are you sure?'}, :method => :delete, class: 'button'
 
 br
 

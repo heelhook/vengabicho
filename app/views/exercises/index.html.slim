@@ -1,0 +1,28 @@
+h1 Exercises
+
+= link_to 'New Exercise', new_exercise_path, class: 'button'
+
+table
+  thead
+    tr
+      th Name
+      th Description
+      th Training Areas
+      th
+
+  tbody
+    - @exercises.each do |exercise|
+      tr
+        td = exercise.name
+        td = exercise.description
+        td
+          ul
+            - exercise.training_areas.each do |training_area|
+              li= training_area.name
+        td
+          - if exercise.user == current_user
+            a.button[href=edit_exercise_path(exercise)]
+              i.fa.fa-edit
+            a.button[href=url_for(exercise) data-confirm="Are you sure?" data-method='delete']
+              i.fa.fa-trash
+

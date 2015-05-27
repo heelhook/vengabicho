@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
 
   has_many :workouts, dependent: :destroy
   has_many :goals, dependent: :destroy
+  has_many :exercises, dependent: :destroy
+  has_many :training_areas, dependent: :destroy
   has_many :training_area_points, dependent: :destroy
   has_many :training_periods, dependent: :destroy
 
@@ -16,6 +18,14 @@ class User < ActiveRecord::Base
   before_save :setup_resources
 
   serialize :colors, Hash
+
+  def all_training_areas
+    self.training_areas + TrainingArea.where(user: nil).all
+  end
+
+  def all_exercises
+    self.exercises + Exercise.where(user: nil).all
+  end
 
   private
 

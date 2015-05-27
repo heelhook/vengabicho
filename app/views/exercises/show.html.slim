@@ -1,0 +1,12 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @exercise.name
+p
+  strong Description:
+  = @exercise.description
+
+= link_to 'Edit', edit_exercise_path(@exercise)
+'|
+= link_to 'Back', exercises_path

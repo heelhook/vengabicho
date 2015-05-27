@@ -2,6 +2,7 @@ class Exercise < ActiveRecord::Base
   extend FriendlyId
   friendly_id :slug_candidates, use: [ :slugged, :finders ]
 
+  belongs_to :user
   has_and_belongs_to_many :training_areas
 
   validates :slug, presence: true
