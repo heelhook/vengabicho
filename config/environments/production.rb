@@ -28,7 +28,7 @@ Rails.application.configure do
   config.middleware.use Rack::Deflater
 
   # Ensure requests are only served from one, canonical host name
-  config.middleware.use Rack::CanonicalHost, "http://www.vengabicho.com/"
+  config.middleware.use Rack::CanonicalHost, "www.vengabicho.com"
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
