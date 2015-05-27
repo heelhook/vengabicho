@@ -4,7 +4,7 @@ class TrainingAreasController < ApplicationController
   respond_to :html
 
   def index
-    @training_areas = current_user.all_training_areas
+    @training_areas = current_user.training_areas
   end
 
   def show

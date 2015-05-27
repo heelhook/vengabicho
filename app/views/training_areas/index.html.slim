@@ -20,9 +20,8 @@ table
             - training_area.exercises.each do |exercise|
               li= link_to exercise.name, exercise_path(exercise)
         td
-          - if training_area.user == current_user
-            = link_to 'Edit', edit_training_area_path(training_area), class: 'button'
-            = link_to 'Destroy', training_area, data: {:confirm => 'Are you sure?'}, :method => :delete, class: 'button'
+          = link_to 'Edit', edit_training_area_path(training_area), class: 'button'
+          = link_to 'Destroy', training_area, data: {:confirm => 'Are you sure?'}, :method => :delete, class: 'button'
 
 br
 

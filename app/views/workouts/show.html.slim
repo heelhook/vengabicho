@@ -3,7 +3,7 @@
 
   p
     strong Log Exercise
-    = select_tag :exercise, options_from_collection_for_select(Exercise.all, :slug, :name), prompt: @workout.log_exercise_prompt
+    = select_tag :exercise, options_from_collection_for_select(current_user.exercises, :slug, :name), prompt: @workout.log_exercise_prompt
 
   .exercises
     - @workout.workout_exercises.each do |exercise|

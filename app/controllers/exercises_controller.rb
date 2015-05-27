@@ -3,7 +3,7 @@ class ExercisesController < ApplicationController
   respond_to :html
 
   def index
-    @exercises = current_user.all_exercises
+    @exercises = current_user.exercises
   end
 
   def show

@@ -16,18 +16,31 @@ class User < ActiveRecord::Base
   validates :email, :slug, uniqueness: true
 
   before_save :setup_resources
+  after_create :copy_global_resources
 
   serialize :colors, Hash
 
-  def all_training_areas
-    self.training_areas + TrainingArea.where(user: nil).all
-  end
-
-  def all_exercises
-    self.exercises + Exercise.where(user: nil).all
-  end
-
   private
+
+  def copy_global_resources
+    TrainingArea.global.each do |training_area|
+      self.training_areas.create!(
+        name: training_area.name,
+        description: training_area.description,
+      )
+    end
+
+    Exercise.global.each do |exercise|
+      new_exercise = self.exercises.create!(
+        name: exercise.name,
+        description: exercise.description,
+      )
+
+      exercise.training_areas.each do |training_area|
+        new_exercise.training_areas << self.training_areas.where(name: training_area.name)
+      end
+    end
+  end
 
   def setup_resources
     self.colors = {

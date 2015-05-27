@@ -7,8 +7,8 @@ class Exercise < ActiveRecord::Base
 
   validates :slug, presence: true
 
-  def self.[](name)
-    Exercise.where(name: name).first!
+  def self.global
+    Exercise.where(user: nil).all
   end
 
   private

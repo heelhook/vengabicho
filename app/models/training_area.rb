@@ -7,15 +7,18 @@ class TrainingArea < ActiveRecord::Base
 
   validates :slug, presence: true
 
-  def self.[](name)
-    TrainingArea.where(name: name).first!
+  delegate :slug, to: :user, prefix: true, allow_nil: true
+
+  def self.global
+    TrainingArea.where(user: nil).all
   end
 
   private
 
   def slug_candidates
     [
-      [ :name ]
+      [ :name ],
+      [ :user_slug, :name, ],
     ]
   end
 end
