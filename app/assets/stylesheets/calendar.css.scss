@@ -14,6 +14,12 @@
     background: #eeeeee;
   }
 
+  .fc-row .fc-content-skeleton td.fc-today {
+    font-weight: 600;
+    background-color: #538EBC;
+    color: white;
+  }
+
   .fc-widget-header table, .fc-content-skeleton table {
     margin: 0px;
 
