@@ -7,6 +7,8 @@ class Exercise < ActiveRecord::Base
 
   validates :slug, presence: true
 
+  delegate :slug, to: :user, prefix: true, allow_nil: true
+
   def self.global
     Exercise.where(user: nil).all
   end
@@ -15,7 +17,8 @@ class Exercise < ActiveRecord::Base
 
   def slug_candidates
     [
-      [ :name ]
+      [ :name ],
+      [ :name, :user_slug ],
     ]
   end
 end

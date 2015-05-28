@@ -4,8 +4,9 @@
     i.fa.fa-close[data-role="remove"]
 
   - begin
-    = render partial: "exercise_log_#{exercise.slug.underscore}", locals: { exercise: exercise }
+    = render partial: "exercise_log_#{exercise.template_name}", locals: { exercise: exercise }
   - rescue ActionView::MissingTemplate => e
+    span.hidden= e.path
   - rescue => e
     pre= e
 
